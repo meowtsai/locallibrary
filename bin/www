@@ -7,6 +7,12 @@
 var app = require('../app');
 var debug = require('debug')('express-locallibrary-tutorial:server');
 var http = require('http');
+const https = require('https');
+
+const options = {
+  key: fs.readFileSync('/etc/letsencrypt/live/meowroll.com/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/meowroll.com/fullchain.pem')
+};
 
 /**
  * Get port from environment and store in Express.
@@ -14,12 +20,15 @@ var http = require('http');
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
+app.set(options);
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+//var server = https.createServer(app);
+var server = https.createServer(app);
+
 
 /**
  * Listen on provided port, on all network interfaces.
