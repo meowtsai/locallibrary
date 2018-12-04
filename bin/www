@@ -21,14 +21,14 @@ const options = {
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
-app.set(options);
+//app.set(options);
 
 /**
  * Create HTTP server.
  */
 
 //var server = https.createServer(app);
-var server = https.createServer(app);
+var server = https.createServer(options,app);
 
 
 /**
