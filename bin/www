@@ -8,6 +8,7 @@ var app = require('../app');
 var debug = require('debug')('express-locallibrary-tutorial:server');
 var http = require('http');
 const https = require('https');
+var fs = require('fs');
 
 const options = {
   key: fs.readFileSync('/etc/letsencrypt/live/meowroll.com/privkey.pem'),
